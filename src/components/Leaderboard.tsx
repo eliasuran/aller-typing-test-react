@@ -54,9 +54,7 @@ export default function Leaderboard(props: {
         className='bg-red absolute left-12 top-12 rounded-md p-2 font-semibold text-white'
         onClick={() => {
           localStorage.removeItem('username');
-          props.setStage(0);
-          props.setLetters([]);
-          props.setUserInput('');
+          window.location.reload();
         }}
       >
         Log Out

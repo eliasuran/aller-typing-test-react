@@ -31,7 +31,7 @@ export default function TextDisplay(props: {
               key={letter.index}
               className={`${letter.wordIndex < props.wordIndex ? 'absolute text-[transparent]' : letter.correct ? 'text-black' : 'text-red'}`}
             >
-              {props.letters[letter.index].letter}
+              {props.letters[letter.index]?.letter}
             </span>
           ))}
         </div>
