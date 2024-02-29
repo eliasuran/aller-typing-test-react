@@ -77,6 +77,15 @@ export default function Typing(props: {
                 return;
               }
               if (
+                props.letters[props.letters.length - 1].letter === ' ' &&
+                props.letters[props.letters.length - 1].correct &&
+                e.key === 'Backspace'
+              ) {
+                console.log('cant go back there');
+                e.preventDefault();
+                return;
+              }
+              if (
                 !props.letters[props.letters.length - 1]?.correct &&
                 e.key !== 'Backspace'
               ) {

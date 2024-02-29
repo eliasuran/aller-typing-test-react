@@ -62,6 +62,8 @@ export default function Home() {
     const correct =
       userInput[userInput.length - 1] === passage[userInput.length - 1];
 
+    console.log(letters);
+
     // adds the letter to the letters arr
     // first checks if the user used backspace, if so: decrement letterIndex and remove the last item from Letters
     // then checks if space was clicked, if not: increment letterIndex and add the letter to letters
