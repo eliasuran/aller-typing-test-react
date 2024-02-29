@@ -81,6 +81,7 @@ export default function Typing(props: {
               ) {
                 console.log('no');
                 e.preventDefault();
+                return;
               }
             }}
             spellCheck='false'

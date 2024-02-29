@@ -55,6 +55,8 @@ export default function Home() {
     // dont do any checks if userInput is empty (the very first one)
     if (userInput.trim() === '') return;
 
+    console.log(letters);
+
     // if the current letter is a space:
     // set the space var to true, which is then used later
     // increment wordIndex by 1
@@ -66,10 +68,8 @@ export default function Home() {
     }
 
     // if a letter is wrong, set correct to false
-    let correct = true;
-    if (userInput[userInput.length - 1] !== passage[letterIndex]) {
-      correct = false;
-    }
+    const correct =
+      userInput[userInput.length - 1] === passage[userInput.length - 1];
 
     // adds the letter to the letters arr
     // first checks if the user used backspace, if so: decrement letterIndex and remove the last item from Letters
@@ -85,7 +85,7 @@ export default function Home() {
         {
           letter: userInput[userInput.length - 1],
           correct,
-          index: letterIndex,
+          index: userInput.length - 1,
           wordIndex,
           relativeIndex: userInput.length - wordBoundaries[wordIndex] - 1,
         },
@@ -177,7 +177,14 @@ export default function Home() {
   return (
     <Layout>
       <div className='relative h-full w-full'>
-        {stages.map((stage) => (
+        <div className='absolute inset-0 grid place-items-center'>
+          <h1 className='absolute left-0 top-0 w-full text-center text-lg'>
+            {stages[1].title}
+          </h1>
+          {stages[1].content}
+        </div>
+
+        {/*{stages.map((stage) => (
           <div key={stage.stageNr}>
             {stage.stageNr === currentStage && (
               <>
@@ -190,7 +197,7 @@ export default function Home() {
               </>
             )}
           </div>
-        ))}
+        ))}*/}
       </div>
     </Layout>
   );
