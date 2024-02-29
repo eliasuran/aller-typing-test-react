@@ -20,13 +20,6 @@ export default function Home() {
   const passage =
     'hei jeg heter elias og er en 17 år gammel elev på elvebakken vgs 2IT. jeg liker å skrive kode og å bruke vim';
 
-  // NOTE: currently not in use (probably wont be later, was just for testing, keeping it just in case)
-  // passage in array with objects
-  //let passageArr: PassageLetter[] = [];
-  //for (let i = 0; i < passage.split('').length; i++) {
-  //passageArr.push({ letter: passage.split('')[i], index: i });
-  //}
-
   // user input in a mutable var
   const [userInput, setUserInput] = useState('');
 
@@ -54,8 +47,6 @@ export default function Home() {
   useEffect(() => {
     // dont do any checks if userInput is empty (the very first one)
     if (userInput.trim() === '') return;
-
-    console.log(letters);
 
     // if the current letter is a space:
     // set the space var to true, which is then used later
@@ -155,6 +146,7 @@ export default function Home() {
           setUserInput={setUserInput}
           wordBoundaries={wordBoundaries}
           letters={letters}
+          setLetters={setLetters}
           wordIndex={wordIndex}
           letterIndex={letterIndex}
         />

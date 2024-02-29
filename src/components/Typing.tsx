@@ -27,6 +27,7 @@ export default function Typing(props: {
   setUserInput: Dispatch<SetStateAction<string>>;
   wordBoundaries: number[];
   letters: Letter[];
+  setLetters: Dispatch<SetStateAction<Letter[]>>;
   wordIndex: number;
   letterIndex: number;
 }) {
@@ -87,10 +88,11 @@ export default function Typing(props: {
             spellCheck='false'
             className='absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 text-[transparent] outline-none'
           />
-          <div className='bg-white p-4 text-left'>
+          <div className='h-full bg-white p-4 text-left'>
             {/* component displaying the text you write and colors text accordingly */}
             <TextDisplay
               letters={props.letters}
+              setLetters={props.setLetters}
               passage={props.passage}
               wordIndex={props.wordIndex}
               letterIndex={props.letterIndex}
