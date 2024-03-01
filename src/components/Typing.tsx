@@ -49,15 +49,15 @@ export default function Typing(props: {
   // here i have a textarea. the textarea is actually not visible, its just used to get somewhere to get text
   // the text is displayed in TextDisplay, which maps over the letters array, this way, i can display incorrect letters in red
   return (
-    <div className='mt-12 flex w-5/6 flex-col items-center gap-2'>
+    <div className="mt-12 flex w-5/6 flex-col items-center gap-2">
       <Timer time={props.time} />
-      <div className='relative w-full space-y-2'>
-        <label htmlFor='input' className='text-md'>
+      <div className="relative w-full space-y-2">
+        <label htmlFor="input" className="text-md">
           Type here
         </label>
-        <div className='text-md relative h-36 w-full overflow-hidden rounded-sm'>
+        <div className="relative h-36 w-full overflow-hidden rounded-sm text-md">
           <textarea
-            id='input'
+            id="input"
             value={props.userInput}
             onChange={(e) => {
               props.setUserInput(e.target.value);
@@ -97,10 +97,10 @@ export default function Typing(props: {
                 return;
               }
             }}
-            spellCheck='false'
-            className='absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 text-[transparent] outline-none'
+            spellCheck="false"
+            className="absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 text-[transparent] outline-none"
           />
-          <div className='h-full bg-white p-4 text-left'>
+          <div className="h-full bg-white p-4 text-left">
             {/* component displaying the text you write and colors text accordingly */}
             <TextDisplay
               letters={props.letters}
@@ -120,11 +120,11 @@ export default function Typing(props: {
 // TODO: move to own file for better readability?
 function Timer(props: { time: number }) {
   return (
-    <div className='flex items-center gap-2'>
-      <div className='text-xxl grid aspect-square h-24 place-items-center rounded-full bg-white text-black'>
+    <div className="flex items-center gap-2">
+      <div className="grid aspect-square h-24 place-items-center rounded-full bg-white text-xxl text-black">
         {props.time}
       </div>
-      <h2 className='text-md'>seconds</h2>
+      <h2 className="text-md">seconds</h2>
     </div>
   );
 }
@@ -133,5 +133,5 @@ function Timer(props: { time: number }) {
 // TODO (DONE!): live update
 // TODO: also move to own file?
 function WPM(props: { wpm: number }) {
-  return <h2 className='text-md self-end font-semibold'>WPM: {props.wpm}</h2>;
+  return <h2 className="self-end text-md font-semibold">WPM: {props.wpm}</h2>;
 }

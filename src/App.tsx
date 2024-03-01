@@ -169,13 +169,13 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className='relative h-full w-full'>
+      <div className="relative h-full w-full">
         {stages.map((stage) => (
           <div key={stage.stageNr}>
             {stage.stageNr === currentStage && (
               <>
-                <div className='absolute inset-0 grid place-items-center'>
-                  <h1 className='absolute left-0 top-0 w-full text-center text-lg'>
+                <div className="absolute inset-0 grid place-items-center">
+                  <h1 className="absolute left-0 top-0 w-full text-center text-lg">
                     {stage.title}
                   </h1>
                   {stage.content}
