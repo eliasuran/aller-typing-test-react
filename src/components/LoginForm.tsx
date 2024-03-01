@@ -26,19 +26,19 @@ export default function LoginForm(props: {
         props.setUser(user.username);
         props.setStage(1);
       }}
-      className='flex w-72 flex-col gap-6'
+      className="flex w-72 flex-col gap-6"
     >
-      <div className='flex flex-col gap-2'>
-        <label htmlFor='name'>Name</label>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="name">Name</label>
         <input
-          id='name'
-          type='text'
+          id="name"
+          type="text"
           onChange={(e) => setUsername(e.target.value)}
-          className='w-full rounded-sm p-2 text-black'
+          className="w-full rounded-sm p-2 text-black"
         />
-        {error.length > 0 && <h2 className='text-red text-xxs'>{error}</h2>}
+        {error.length > 0 && <h2 className="text-xxs text-red">{error}</h2>}
       </div>
-      <button type='submit' className='bg-red rounded-sm p-2 font-semibold'>
+      <button type="submit" className="rounded-sm bg-red p-2 font-semibold">
         Next
       </button>
     </form>
