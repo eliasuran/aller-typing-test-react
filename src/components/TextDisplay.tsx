@@ -23,13 +23,19 @@ export default function TextDisplay(props: {
     setNewPassage((prev) => [...prev.slice(1)]);
   }, [props.wordIndex]);
   return (
-    <div className='text-md relative text-black/40'>
-      <div className='absolute top-0'>
+    <div className="relative text-md text-black/40">
+      <div className="absolute top-0">
         <div>
           {props.letters.map((letter) => (
             <span
               key={letter.index}
-              className={`${letter.wordIndex < props.wordIndex ? 'absolute text-[transparent]' : letter.correct ? 'text-black' : 'text-red'}`}
+              className={`${
+                letter.wordIndex < props.wordIndex
+                  ? 'absolute text-[transparent]'
+                  : letter.correct
+                  ? 'text-black'
+                  : 'text-red'
+              }`}
             >
               {props.letters[letter.index]?.letter}
             </span>
