@@ -7,7 +7,6 @@ export default function TextDisplay(props: {
   setLetters: Dispatch<SetStateAction<Letter[]>>;
   passage: string;
   wordIndex: number;
-  letterIndex: number;
 }) {
   // initializing a new modifiable version of passage
   // assigning passage to the newPassage variable on client load

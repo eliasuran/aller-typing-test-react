@@ -29,7 +29,6 @@ export default function Typing(props: {
   letters: Letter[];
   setLetters: Dispatch<SetStateAction<Letter[]>>;
   wordIndex: number;
-  letterIndex: number;
 }) {
   // live tracking wpm
   // tracks elapesed time to calculate wpm live
@@ -108,7 +107,6 @@ export default function Typing(props: {
               setLetters={props.setLetters}
               passage={props.passage}
               wordIndex={props.wordIndex}
-              letterIndex={props.letterIndex}
             />
           </div>
         </div>

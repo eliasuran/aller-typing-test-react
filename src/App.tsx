@@ -23,9 +23,6 @@ export default function Home() {
   // user input in a mutable var
   const [userInput, setUserInput] = useState('');
 
-  // current letter index
-  const [letterIndex, setLetterIndex] = useState(0);
-
   // keeping track of word index
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -53,7 +50,7 @@ export default function Home() {
     // increment wordIndex by 1
     // sets a new wordBoundary to the length of the userInput
     // sets the letter index to the start of the next word, in case user didnt finish the word
-    if (userInput.endsWith(' ') && passage[letterIndex] === ' ') {
+    if (userInput.endsWith(' ') && passage[letters.length] === ' ') {
       setWordIndex(wordIndex + 1);
       setWordBoundaries([...wordBoundaries, userInput.length]);
     }
@@ -62,17 +59,20 @@ export default function Home() {
     const correct =
       userInput[userInput.length - 1] === passage[userInput.length - 1];
 
-    console.log(letters);
+    if (!correct) {
+      console.log(
+        userInput[userInput.length - 1],
+        passage[userInput.length - 1],
+      );
+    }
 
     // adds the letter to the letters arr
     // first checks if the user used backspace, if so: decrement letterIndex and remove the last item from Letters
     // then checks if space was clicked, if not: increment letterIndex and add the letter to letters
     // if space was clicked: add a new letter (the space) and making the index letterIndex + diff in case you skipped some letters in the word
     if (prevUserInputLength > userInput.length) {
-      setLetterIndex(letterIndex - 1);
       setLetters(letters.slice(0, -1));
     } else {
-      setLetterIndex(letterIndex + 1);
       setLetters((prevLetters) => [
         ...prevLetters,
         {
@@ -150,7 +150,6 @@ export default function Home() {
           letters={letters}
           setLetters={setLetters}
           wordIndex={wordIndex}
-          letterIndex={letterIndex}
         />
       ),
     },
@@ -171,13 +170,7 @@ export default function Home() {
   return (
     <Layout>
       <div className='relative h-full w-full'>
-        <div className='absolute inset-0 grid place-items-center'>
-          <h1 className='absolute left-0 top-0 w-full text-center text-lg'>
-            {stages[1].title}
-          </h1>
-          {stages[1].content}
-        </div>
-        {/*{stages.map((stage) => (
+        {stages.map((stage) => (
           <div key={stage.stageNr}>
             {stage.stageNr === currentStage && (
               <>
@@ -190,7 +183,7 @@ export default function Home() {
               </>
             )}
           </div>
-        ))}*/}
+        ))}
       </div>
     </Layout>
   );
