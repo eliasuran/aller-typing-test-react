@@ -10,10 +10,16 @@ export default function Leaderboard(props: {
 }) {
   // initialising a var to store all the users and assign the type of User[] defined in lib/leaderboard.ts
   // then i get the fastest typists in a useEffect
-  // has to be in a useEffect because getting data from localstorage requires that it is for sure on the client
+  // after that an event listener is added to window which listens to changes in localstorage, basically making it work like a websocket
   const [users, setUsers] = useState([] as User[]);
   useEffect(() => {
     setUsers(getFastestTypists);
+
+    window.addEventListener('storage', () => setUsers(getFastestTypists));
+
+    return () => {
+      window.removeEventListener('storage', () => setUsers(getFastestTypists));
+    };
   }, []);
 
   // basically just mapping over users and displaying username and wpm
