@@ -76,6 +76,10 @@ export default function Typing(props: {
               if (props.letters.length === 0) {
                 return;
               }
+              if (props.letters.length === 1 && e.key === 'Backspace') {
+                props.setLetters([]);
+                return;
+              }
               if (
                 props.letters[props.letters.length - 1].letter === ' ' &&
                 props.letters[props.letters.length - 1].correct &&
