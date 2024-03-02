@@ -32,8 +32,8 @@ export default function TextDisplay(props: {
                 letter.wordIndex < props.wordIndex
                   ? 'absolute text-[transparent]'
                   : letter.correct
-                  ? 'text-black'
-                  : 'text-red'
+                    ? 'text-black'
+                    : 'text-red line-through'
               }`}
             >
               {props.letters[letter.index]?.letter}
