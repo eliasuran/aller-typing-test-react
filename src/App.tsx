@@ -13,12 +13,13 @@ import Leaderboard from './components/Leaderboard';
 
 // types
 import type { Letter } from './lib/sharedTypes';
+import { totalTime } from './lib/typing';
 
 export default function Home() {
   // the typing part of the app
   // initializing of the passage which currently is just some random string
   const passage =
-    'hei jeg heter elias og er en 17 år gammel elev på elvebakken vgs 2IT. jeg liker å skrive kode og å bruke vim';
+    'This is why eSports will never hit the general public as hard as for instance soccer. the way you kids are spamming this chat is just ruining the whole experience for a grown man. Seriously. Grow up - Caedrel 2021';
 
   // user input in a mutable var
   const [userInput, setUserInput] = useState('');
@@ -59,13 +60,6 @@ export default function Home() {
     const correct =
       userInput[userInput.length - 1] === passage[userInput.length - 1];
 
-    if (!correct) {
-      console.log(
-        userInput[userInput.length - 1],
-        passage[userInput.length - 1],
-      );
-    }
-
     // adds the letter to the letters arr
     // first checks if the user used backspace, if so: decrement letterIndex and remove the last item from Letters
     // then checks if space was clicked, if not: increment letterIndex and add the letter to letters
@@ -92,7 +86,7 @@ export default function Home() {
 
   // tracking of wpm and time
   const [wpm, setWpm] = useState(0);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(totalTime / 1000);
 
   // ui is split into 3 parts, the ui will alternate between these 3 parts in this order
   // user login
@@ -170,7 +164,13 @@ export default function Home() {
   return (
     <Layout>
       <div className="relative h-full w-full">
-        {stages.map((stage) => (
+        <div className="absolute inset-0 grid place-items-center">
+          <h1 className="absolute left-0 top-0 w-full text-center text-lg">
+            {stages[1].title}
+          </h1>
+          {stages[1].content}
+        </div>
+        {/*{stages.map((stage) => (
           <div key={stage.stageNr}>
             {stage.stageNr === currentStage && (
               <>
@@ -183,7 +183,7 @@ export default function Home() {
               </>
             )}
           </div>
-        ))}
+        ))}*/}
       </div>
     </Layout>
   );

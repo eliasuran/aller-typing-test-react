@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from 'react';
 // total time is just the total time
 let started: boolean;
 let time: number;
-const totalTime = 10000;
+export const totalTime = 30000;
 
 export function currentTime() {
   return time;

@@ -4,4 +4,4 @@
 
 - change totalTime in src/lib/typing.ts to the desired time (in milliseconds)
 
-- change the [time, setTime] = useState(set your desired time here) in src/App.tsx to desired time (in seconds)
+- the time var used for the timer will autmoatically be updated accordingly

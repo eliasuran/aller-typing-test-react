@@ -98,7 +98,7 @@ export default function Typing(props: {
               }
             }}
             spellCheck="false"
-            className="absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 text-[transparent] outline-none"
+            className={`${props.letters.length === 0 ? 'text-black' : 'text-[transparent]'} absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 outline-none`}
           />
           <div className="h-full bg-white p-4 text-left">
             {/* component displaying the text you write and colors text accordingly */}
