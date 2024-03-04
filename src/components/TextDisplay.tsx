@@ -36,7 +36,7 @@ export default function TextDisplay(props: {
                     : 'text-red line-through'
               }`}
             >
-              {props.letters[letter.index]?.letter}
+              {props.passage[letter.index]}
             </span>
           ))}
         </div>

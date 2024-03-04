@@ -29,6 +29,7 @@ export default function Typing(props: {
   letters: Letter[];
   setLetters: Dispatch<SetStateAction<Letter[]>>;
   wordIndex: number;
+  setPopup: Dispatch<SetStateAction<string>>;
 }) {
   // live tracking wpm
   // tracks elapesed time to calculate wpm live
@@ -84,7 +85,7 @@ export default function Typing(props: {
                 props.letters[props.letters.length - 1].correct &&
                 e.key === 'Backspace'
               ) {
-                console.log('cant go back there');
+                props.setPopup("Can't go back to a finished word");
                 e.preventDefault();
                 return;
               }
@@ -92,10 +93,11 @@ export default function Typing(props: {
                 !props.letters[props.letters.length - 1]?.correct &&
                 e.key !== 'Backspace'
               ) {
-                console.log('no');
                 e.preventDefault();
+                props.setPopup('Wrong letter, fix it up to continue');
                 return;
               }
+              props.setPopup('');
             }}
             spellCheck="false"
             className={`${props.letters.length === 0 ? 'text-black' : 'text-[transparent]'} absolute left-0 top-0 z-50 h-full w-full resize-none bg-[transparent] p-4 outline-none`}
@@ -117,7 +119,6 @@ export default function Typing(props: {
 }
 
 // component displaying the timer
-// TODO: move to own file for better readability?
 function Timer(props: { time: number }) {
   return (
     <div className="flex items-center gap-2">
@@ -130,8 +131,6 @@ function Timer(props: { time: number }) {
 }
 
 // component displaying words per minute
-// TODO (DONE!): live update
-// TODO: also move to own file?
 function WPM(props: { wpm: number }) {
   return <h2 className="self-end text-md font-semibold">WPM: {props.wpm}</h2>;
 }

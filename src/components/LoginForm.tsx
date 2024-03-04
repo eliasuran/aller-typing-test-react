@@ -9,7 +9,6 @@ export default function LoginForm(props: {
   // when the form is submitted i await a result which is stored in user
   // if the status isnt 200 (successful), i log the message and return
   // if its successful i set the stage to the next one and sets user to the username provided
-  // TODO: add check for multiple of same username (should not be allowed)
   const [username, setUsername] = useState('');
 
   // initilazing a error variable used to display an error if one is returned from loginUser()

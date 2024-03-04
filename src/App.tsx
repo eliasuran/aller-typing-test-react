@@ -41,7 +41,6 @@ export default function Home() {
   const [prevUserInputLength, setPrevUserInputLength] = useState(0);
 
   // keeping track of currentWordIndex
-  // TODO: if a letter is wrong, make that letter red (currently just appending to incorrectLetter array)
   useEffect(() => {
     // dont do any checks if userInput is empty (the very first one)
     if (userInput.trim() === '') return;
@@ -93,7 +92,6 @@ export default function Home() {
   // the typing exercise which also displays wpm and timer
   // the leaderboard
   // this var is used to track the current stage and setCurrentStage is used to set stage
-  // NOTE: currently not in use since i am working only on typing stage
   const [currentStage, setCurrentStage] = useState(0);
 
   // gets user from localstorage and stores it in a variable, the user var is used in various components
@@ -111,6 +109,9 @@ export default function Home() {
       }
     }
   }, []);
+
+  // init a popup var used for help messages
+  const [popup, setPopup] = useState('');
 
   // defining all the stages and its content in an object
   // interface:
@@ -144,6 +145,7 @@ export default function Home() {
           letters={letters}
           setLetters={setLetters}
           wordIndex={wordIndex}
+          setPopup={setPopup}
         />
       ),
     },
@@ -163,7 +165,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="relative h-full w-full">
+      <div className="relative flex h-full w-full flex-col">
         {stages.map((stage) => (
           <div key={stage.stageNr}>
             {stage.stageNr === currentStage && (
@@ -174,6 +176,11 @@ export default function Home() {
                   </h1>
                   {stage.content}
                 </div>
+                {popup.length > 0 && (
+                  <h2 className="absolute bottom-2 w-full text-center text-sm text-red">
+                    {popup}
+                  </h2>
+                )}
               </>
             )}
           </div>
